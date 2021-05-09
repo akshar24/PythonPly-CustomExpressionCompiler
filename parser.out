@@ -1,0 +1,1265 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Grammar
+
+Rule 0     S' -> Start
+Rule 1     Start -> Undefined
+Rule 2     Start -> Array
+Rule 3     Start -> Enumeration
+Rule 4     Enumeration -> ENUM
+Rule 5     Array -> Array COMMA BooleanExpr
+Rule 6     Array -> BooleanExpr
+Rule 7     BooleanExpr -> BooleanExpr OR BooleanTerm
+Rule 8     BooleanExpr -> BooleanTerm
+Rule 9     BooleanTerm -> BooleanTerm AND BooleanFactor
+Rule 10    BooleanTerm -> BooleanFactor
+Rule 11    LogicalOp -> GE
+Rule 12    LogicalOp -> LE
+Rule 13    LogicalOp -> LTE
+Rule 14    LogicalOp -> GTE
+Rule 15    LogicalOp -> EQUAL
+Rule 16    LogicalOp -> NE
+Rule 17    BooleanFactor -> BooleanFactor LogicalOp BoolBase
+Rule 18    BooleanFactor -> BoolBase
+Rule 19    BoolBase -> String
+Rule 20    BoolBase -> NOT BoolBase
+Rule 21    BoolBase -> TRUE
+Rule 22    BoolBase -> FALSE
+Rule 23    String -> String PLUS StringBase
+Rule 24    Undefined -> UNDEFINED
+Rule 25    String -> StringBase
+Rule 26    StringBase -> expression
+Rule 27    StringBase -> REVERSE StringBase
+Rule 28    StringBase -> STR
+Rule 29    expression -> expression SUB term
+Rule 30    expression -> term
+Rule 31    term -> term MULT term2
+Rule 32    term -> term DIV term2
+Rule 33    term -> term2
+Rule 34    term2 -> term2 EXP factor
+Rule 35    term2 -> factor
+Rule 36    factor -> INTEGER
+Rule 37    factor -> SUB factor
+Rule 38    factor -> VAR
+Rule 39    factor -> LPAREN BooleanExpr RPAREN
+
+Terminals, with rules where they appear
+
+AND                  : 9
+COMMA                : 5
+DIV                  : 32
+ENUM                 : 4
+EQUAL                : 15
+EXP                  : 34
+FALSE                : 22
+GE                   : 11
+GTE                  : 14
+INTEGER              : 36
+LE                   : 12
+LPAREN               : 39
+LTE                  : 13
+MULT                 : 31
+NE                   : 16
+NOT                  : 20
+OR                   : 7
+PLUS                 : 23
+REVERSE              : 27
+RPAREN               : 39
+STR                  : 28
+SUB                  : 29 37
+TRUE                 : 21
+UNDEFINED            : 24
+VAR                  : 38
+error                : 
+
+Nonterminals, with rules where they appear
+
+Array                : 2 5
+BoolBase             : 17 18 20
+BooleanExpr          : 5 6 7 39
+BooleanFactor        : 9 10 17
+BooleanTerm          : 7 8 9
+Enumeration          : 3
+LogicalOp            : 17
+Start                : 0
+String               : 19 23
+StringBase           : 23 25 27
+Undefined            : 1
+expression           : 26 29
+factor               : 34 35 37
+term                 : 29 30 31 32
+term2                : 31 32 33 34
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . Start
+    (1) Start -> . Undefined
+    (2) Start -> . Array
+    (3) Start -> . Enumeration
+    (24) Undefined -> . UNDEFINED
+    (5) Array -> . Array COMMA BooleanExpr
+    (6) Array -> . BooleanExpr
+    (4) Enumeration -> . ENUM
+    (7) BooleanExpr -> . BooleanExpr OR BooleanTerm
+    (8) BooleanExpr -> . BooleanTerm
+    (9) BooleanTerm -> . BooleanTerm AND BooleanFactor
+    (10) BooleanTerm -> . BooleanFactor
+    (17) BooleanFactor -> . BooleanFactor LogicalOp BoolBase
+    (18) BooleanFactor -> . BoolBase
+    (19) BoolBase -> . String
+    (20) BoolBase -> . NOT BoolBase
+    (21) BoolBase -> . TRUE
+    (22) BoolBase -> . FALSE
+    (23) String -> . String PLUS StringBase
+    (25) String -> . StringBase
+    (26) StringBase -> . expression
+    (27) StringBase -> . REVERSE StringBase
+    (28) StringBase -> . STR
+    (29) expression -> . expression SUB term
+    (30) expression -> . term
+    (31) term -> . term MULT term2
+    (32) term -> . term DIV term2
+    (33) term -> . term2
+    (34) term2 -> . term2 EXP factor
+    (35) term2 -> . factor
+    (36) factor -> . INTEGER
+    (37) factor -> . SUB factor
+    (38) factor -> . VAR
+    (39) factor -> . LPAREN BooleanExpr RPAREN
+
+    UNDEFINED       shift and go to state 5
+    ENUM            shift and go to state 7
+    NOT             shift and go to state 12
+    TRUE            shift and go to state 13
+    FALSE           shift and go to state 14
+    REVERSE         shift and go to state 17
+    STR             shift and go to state 18
+    INTEGER         shift and go to state 23
+    SUB             shift and go to state 19
+    VAR             shift and go to state 24
+    LPAREN          shift and go to state 25
+
+    Start                          shift and go to state 1
+    Undefined                      shift and go to state 2
+    Array                          shift and go to state 3
+    Enumeration                    shift and go to state 4
+    BooleanExpr                    shift and go to state 6
+    BooleanTerm                    shift and go to state 8
+    BooleanFactor                  shift and go to state 9
+    BoolBase                       shift and go to state 10
+    String                         shift and go to state 11
+    StringBase                     shift and go to state 15
+    expression                     shift and go to state 16
+    term                           shift and go to state 20
+    term2                          shift and go to state 21
+    factor                         shift and go to state 22
+
+state 1
+
+    (0) S' -> Start .
+
+
+
+state 2
+
+    (1) Start -> Undefined .
+
+    $end            reduce using rule 1 (Start -> Undefined .)
+
+
+state 3
+
+    (2) Start -> Array .
+    (5) Array -> Array . COMMA BooleanExpr
+
+    $end            reduce using rule 2 (Start -> Array .)
+    COMMA           shift and go to state 26
+
+
+state 4
+
+    (3) Start -> Enumeration .
+
+    $end            reduce using rule 3 (Start -> Enumeration .)
+
+
+state 5
+
+    (24) Undefined -> UNDEFINED .
+
+    $end            reduce using rule 24 (Undefined -> UNDEFINED .)
+
+
+state 6
+
+    (6) Array -> BooleanExpr .
+    (7) BooleanExpr -> BooleanExpr . OR BooleanTerm
+
+    COMMA           reduce using rule 6 (Array -> BooleanExpr .)
+    $end            reduce using rule 6 (Array -> BooleanExpr .)
+    OR              shift and go to state 27
+
+
+state 7
+
+    (4) Enumeration -> ENUM .
+
+    $end            reduce using rule 4 (Enumeration -> ENUM .)
+
+
+state 8
+
+    (8) BooleanExpr -> BooleanTerm .
+    (9) BooleanTerm -> BooleanTerm . AND BooleanFactor
+
+    OR              reduce using rule 8 (BooleanExpr -> BooleanTerm .)
+    COMMA           reduce using rule 8 (BooleanExpr -> BooleanTerm .)
+    $end            reduce using rule 8 (BooleanExpr -> BooleanTerm .)
+    RPAREN          reduce using rule 8 (BooleanExpr -> BooleanTerm .)
+    AND             shift and go to state 28
+
+
+state 9
+
+    (10) BooleanTerm -> BooleanFactor .
+    (17) BooleanFactor -> BooleanFactor . LogicalOp BoolBase
+    (11) LogicalOp -> . GE
+    (12) LogicalOp -> . LE
+    (13) LogicalOp -> . LTE
+    (14) LogicalOp -> . GTE
+    (15) LogicalOp -> . EQUAL
+    (16) LogicalOp -> . NE
+
+    AND             reduce using rule 10 (BooleanTerm -> BooleanFactor .)
+    OR              reduce using rule 10 (BooleanTerm -> BooleanFactor .)
+    COMMA           reduce using rule 10 (BooleanTerm -> BooleanFactor .)
+    $end            reduce using rule 10 (BooleanTerm -> BooleanFactor .)
+    RPAREN          reduce using rule 10 (BooleanTerm -> BooleanFactor .)
+    GE              shift and go to state 30
+    LE              shift and go to state 31
+    LTE             shift and go to state 32
+    GTE             shift and go to state 33
+    EQUAL           shift and go to state 34
+    NE              shift and go to state 35
+
+    LogicalOp                      shift and go to state 29
+
+state 10
+
+    (18) BooleanFactor -> BoolBase .
+
+    GE              reduce using rule 18 (BooleanFactor -> BoolBase .)
+    LE              reduce using rule 18 (BooleanFactor -> BoolBase .)
+    LTE             reduce using rule 18 (BooleanFactor -> BoolBase .)
+    GTE             reduce using rule 18 (BooleanFactor -> BoolBase .)
+    EQUAL           reduce using rule 18 (BooleanFactor -> BoolBase .)
+    NE              reduce using rule 18 (BooleanFactor -> BoolBase .)
+    AND             reduce using rule 18 (BooleanFactor -> BoolBase .)
+    OR              reduce using rule 18 (BooleanFactor -> BoolBase .)
+    COMMA           reduce using rule 18 (BooleanFactor -> BoolBase .)
+    $end            reduce using rule 18 (BooleanFactor -> BoolBase .)
+    RPAREN          reduce using rule 18 (BooleanFactor -> BoolBase .)
+
+
+state 11
+
+    (19) BoolBase -> String .
+    (23) String -> String . PLUS StringBase
+
+    GE              reduce using rule 19 (BoolBase -> String .)
+    LE              reduce using rule 19 (BoolBase -> String .)
+    LTE             reduce using rule 19 (BoolBase -> String .)
+    GTE             reduce using rule 19 (BoolBase -> String .)
+    EQUAL           reduce using rule 19 (BoolBase -> String .)
+    NE              reduce using rule 19 (BoolBase -> String .)
+    AND             reduce using rule 19 (BoolBase -> String .)
+    OR              reduce using rule 19 (BoolBase -> String .)
+    COMMA           reduce using rule 19 (BoolBase -> String .)
+    $end            reduce using rule 19 (BoolBase -> String .)
+    RPAREN          reduce using rule 19 (BoolBase -> String .)
+    PLUS            shift and go to state 36
+
+
+state 12
+
+    (20) BoolBase -> NOT . BoolBase
+    (19) BoolBase -> . String
+    (20) BoolBase -> . NOT BoolBase
+    (21) BoolBase -> . TRUE
+    (22) BoolBase -> . FALSE
+    (23) String -> . String PLUS StringBase
+    (25) String -> . StringBase
+    (26) StringBase -> . expression
+    (27) StringBase -> . REVERSE StringBase
+    (28) StringBase -> . STR
+    (29) expression -> . expression SUB term
+    (30) expression -> . term
+    (31) term -> . term MULT term2
+    (32) term -> . term DIV term2
+    (33) term -> . term2
+    (34) term2 -> . term2 EXP factor
+    (35) term2 -> . factor
+    (36) factor -> . INTEGER
+    (37) factor -> . SUB factor
+    (38) factor -> . VAR
+    (39) factor -> . LPAREN BooleanExpr RPAREN
+
+    NOT             shift and go to state 12
+    TRUE            shift and go to state 13
+    FALSE           shift and go to state 14
+    REVERSE         shift and go to state 17
+    STR             shift and go to state 18
+    INTEGER         shift and go to state 23
+    SUB             shift and go to state 19
+    VAR             shift and go to state 24
+    LPAREN          shift and go to state 25
+
+    BoolBase                       shift and go to state 37
+    String                         shift and go to state 11
+    StringBase                     shift and go to state 15
+    expression                     shift and go to state 16
+    term                           shift and go to state 20
+    term2                          shift and go to state 21
+    factor                         shift and go to state 22
+
+state 13
+
+    (21) BoolBase -> TRUE .
+
+    GE              reduce using rule 21 (BoolBase -> TRUE .)
+    LE              reduce using rule 21 (BoolBase -> TRUE .)
+    LTE             reduce using rule 21 (BoolBase -> TRUE .)
+    GTE             reduce using rule 21 (BoolBase -> TRUE .)
+    EQUAL           reduce using rule 21 (BoolBase -> TRUE .)
+    NE              reduce using rule 21 (BoolBase -> TRUE .)
+    AND             reduce using rule 21 (BoolBase -> TRUE .)
+    OR              reduce using rule 21 (BoolBase -> TRUE .)
+    COMMA           reduce using rule 21 (BoolBase -> TRUE .)
+    $end            reduce using rule 21 (BoolBase -> TRUE .)
+    RPAREN          reduce using rule 21 (BoolBase -> TRUE .)
+
+
+state 14
+
+    (22) BoolBase -> FALSE .
+
+    GE              reduce using rule 22 (BoolBase -> FALSE .)
+    LE              reduce using rule 22 (BoolBase -> FALSE .)
+    LTE             reduce using rule 22 (BoolBase -> FALSE .)
+    GTE             reduce using rule 22 (BoolBase -> FALSE .)
+    EQUAL           reduce using rule 22 (BoolBase -> FALSE .)
+    NE              reduce using rule 22 (BoolBase -> FALSE .)
+    AND             reduce using rule 22 (BoolBase -> FALSE .)
+    OR              reduce using rule 22 (BoolBase -> FALSE .)
+    COMMA           reduce using rule 22 (BoolBase -> FALSE .)
+    $end            reduce using rule 22 (BoolBase -> FALSE .)
+    RPAREN          reduce using rule 22 (BoolBase -> FALSE .)
+
+
+state 15
+
+    (25) String -> StringBase .
+
+    PLUS            reduce using rule 25 (String -> StringBase .)
+    GE              reduce using rule 25 (String -> StringBase .)
+    LE              reduce using rule 25 (String -> StringBase .)
+    LTE             reduce using rule 25 (String -> StringBase .)
+    GTE             reduce using rule 25 (String -> StringBase .)
+    EQUAL           reduce using rule 25 (String -> StringBase .)
+    NE              reduce using rule 25 (String -> StringBase .)
+    AND             reduce using rule 25 (String -> StringBase .)
+    OR              reduce using rule 25 (String -> StringBase .)
+    COMMA           reduce using rule 25 (String -> StringBase .)
+    $end            reduce using rule 25 (String -> StringBase .)
+    RPAREN          reduce using rule 25 (String -> StringBase .)
+
+
+state 16
+
+    (26) StringBase -> expression .
+    (29) expression -> expression . SUB term
+
+    PLUS            reduce using rule 26 (StringBase -> expression .)
+    GE              reduce using rule 26 (StringBase -> expression .)
+    LE              reduce using rule 26 (StringBase -> expression .)
+    LTE             reduce using rule 26 (StringBase -> expression .)
+    GTE             reduce using rule 26 (StringBase -> expression .)
+    EQUAL           reduce using rule 26 (StringBase -> expression .)
+    NE              reduce using rule 26 (StringBase -> expression .)
+    AND             reduce using rule 26 (StringBase -> expression .)
+    OR              reduce using rule 26 (StringBase -> expression .)
+    COMMA           reduce using rule 26 (StringBase -> expression .)
+    $end            reduce using rule 26 (StringBase -> expression .)
+    RPAREN          reduce using rule 26 (StringBase -> expression .)
+    SUB             shift and go to state 38
+
+
+state 17
+
+    (27) StringBase -> REVERSE . StringBase
+    (26) StringBase -> . expression
+    (27) StringBase -> . REVERSE StringBase
+    (28) StringBase -> . STR
+    (29) expression -> . expression SUB term
+    (30) expression -> . term
+    (31) term -> . term MULT term2
+    (32) term -> . term DIV term2
+    (33) term -> . term2
+    (34) term2 -> . term2 EXP factor
+    (35) term2 -> . factor
+    (36) factor -> . INTEGER
+    (37) factor -> . SUB factor
+    (38) factor -> . VAR
+    (39) factor -> . LPAREN BooleanExpr RPAREN
+
+    REVERSE         shift and go to state 17
+    STR             shift and go to state 18
+    INTEGER         shift and go to state 23
+    SUB             shift and go to state 19
+    VAR             shift and go to state 24
+    LPAREN          shift and go to state 25
+
+    StringBase                     shift and go to state 39
+    expression                     shift and go to state 16
+    term                           shift and go to state 20
+    term2                          shift and go to state 21
+    factor                         shift and go to state 22
+
+state 18
+
+    (28) StringBase -> STR .
+
+    PLUS            reduce using rule 28 (StringBase -> STR .)
+    GE              reduce using rule 28 (StringBase -> STR .)
+    LE              reduce using rule 28 (StringBase -> STR .)
+    LTE             reduce using rule 28 (StringBase -> STR .)
+    GTE             reduce using rule 28 (StringBase -> STR .)
+    EQUAL           reduce using rule 28 (StringBase -> STR .)
+    NE              reduce using rule 28 (StringBase -> STR .)
+    AND             reduce using rule 28 (StringBase -> STR .)
+    OR              reduce using rule 28 (StringBase -> STR .)
+    COMMA           reduce using rule 28 (StringBase -> STR .)
+    $end            reduce using rule 28 (StringBase -> STR .)
+    RPAREN          reduce using rule 28 (StringBase -> STR .)
+
+
+state 19
+
+    (37) factor -> SUB . factor
+    (36) factor -> . INTEGER
+    (37) factor -> . SUB factor
+    (38) factor -> . VAR
+    (39) factor -> . LPAREN BooleanExpr RPAREN
+
+    INTEGER         shift and go to state 23
+    SUB             shift and go to state 19
+    VAR             shift and go to state 24
+    LPAREN          shift and go to state 25
+
+    factor                         shift and go to state 40
+
+state 20
+
+    (30) expression -> term .
+    (31) term -> term . MULT term2
+    (32) term -> term . DIV term2
+
+    SUB             reduce using rule 30 (expression -> term .)
+    PLUS            reduce using rule 30 (expression -> term .)
+    GE              reduce using rule 30 (expression -> term .)
+    LE              reduce using rule 30 (expression -> term .)
+    LTE             reduce using rule 30 (expression -> term .)
+    GTE             reduce using rule 30 (expression -> term .)
+    EQUAL           reduce using rule 30 (expression -> term .)
+    NE              reduce using rule 30 (expression -> term .)
+    AND             reduce using rule 30 (expression -> term .)
+    OR              reduce using rule 30 (expression -> term .)
+    COMMA           reduce using rule 30 (expression -> term .)
+    $end            reduce using rule 30 (expression -> term .)
+    RPAREN          reduce using rule 30 (expression -> term .)
+    MULT            shift and go to state 41
+    DIV             shift and go to state 42
+
+
+state 21
+
+    (33) term -> term2 .
+    (34) term2 -> term2 . EXP factor
+
+    MULT            reduce using rule 33 (term -> term2 .)
+    DIV             reduce using rule 33 (term -> term2 .)
+    SUB             reduce using rule 33 (term -> term2 .)
+    PLUS            reduce using rule 33 (term -> term2 .)
+    GE              reduce using rule 33 (term -> term2 .)
+    LE              reduce using rule 33 (term -> term2 .)
+    LTE             reduce using rule 33 (term -> term2 .)
+    GTE             reduce using rule 33 (term -> term2 .)
+    EQUAL           reduce using rule 33 (term -> term2 .)
+    NE              reduce using rule 33 (term -> term2 .)
+    AND             reduce using rule 33 (term -> term2 .)
+    OR              reduce using rule 33 (term -> term2 .)
+    COMMA           reduce using rule 33 (term -> term2 .)
+    $end            reduce using rule 33 (term -> term2 .)
+    RPAREN          reduce using rule 33 (term -> term2 .)
+    EXP             shift and go to state 43
+
+
+state 22
+
+    (35) term2 -> factor .
+
+    EXP             reduce using rule 35 (term2 -> factor .)
+    MULT            reduce using rule 35 (term2 -> factor .)
+    DIV             reduce using rule 35 (term2 -> factor .)
+    SUB             reduce using rule 35 (term2 -> factor .)
+    PLUS            reduce using rule 35 (term2 -> factor .)
+    GE              reduce using rule 35 (term2 -> factor .)
+    LE              reduce using rule 35 (term2 -> factor .)
+    LTE             reduce using rule 35 (term2 -> factor .)
+    GTE             reduce using rule 35 (term2 -> factor .)
+    EQUAL           reduce using rule 35 (term2 -> factor .)
+    NE              reduce using rule 35 (term2 -> factor .)
+    AND             reduce using rule 35 (term2 -> factor .)
+    OR              reduce using rule 35 (term2 -> factor .)
+    COMMA           reduce using rule 35 (term2 -> factor .)
+    $end            reduce using rule 35 (term2 -> factor .)
+    RPAREN          reduce using rule 35 (term2 -> factor .)
+
+
+state 23
+
+    (36) factor -> INTEGER .
+
+    EXP             reduce using rule 36 (factor -> INTEGER .)
+    MULT            reduce using rule 36 (factor -> INTEGER .)
+    DIV             reduce using rule 36 (factor -> INTEGER .)
+    SUB             reduce using rule 36 (factor -> INTEGER .)
+    PLUS            reduce using rule 36 (factor -> INTEGER .)
+    GE              reduce using rule 36 (factor -> INTEGER .)
+    LE              reduce using rule 36 (factor -> INTEGER .)
+    LTE             reduce using rule 36 (factor -> INTEGER .)
+    GTE             reduce using rule 36 (factor -> INTEGER .)
+    EQUAL           reduce using rule 36 (factor -> INTEGER .)
+    NE              reduce using rule 36 (factor -> INTEGER .)
+    AND             reduce using rule 36 (factor -> INTEGER .)
+    OR              reduce using rule 36 (factor -> INTEGER .)
+    COMMA           reduce using rule 36 (factor -> INTEGER .)
+    $end            reduce using rule 36 (factor -> INTEGER .)
+    RPAREN          reduce using rule 36 (factor -> INTEGER .)
+
+
+state 24
+
+    (38) factor -> VAR .
+
+    EXP             reduce using rule 38 (factor -> VAR .)
+    MULT            reduce using rule 38 (factor -> VAR .)
+    DIV             reduce using rule 38 (factor -> VAR .)
+    SUB             reduce using rule 38 (factor -> VAR .)
+    PLUS            reduce using rule 38 (factor -> VAR .)
+    GE              reduce using rule 38 (factor -> VAR .)
+    LE              reduce using rule 38 (factor -> VAR .)
+    LTE             reduce using rule 38 (factor -> VAR .)
+    GTE             reduce using rule 38 (factor -> VAR .)
+    EQUAL           reduce using rule 38 (factor -> VAR .)
+    NE              reduce using rule 38 (factor -> VAR .)
+    AND             reduce using rule 38 (factor -> VAR .)
+    OR              reduce using rule 38 (factor -> VAR .)
+    COMMA           reduce using rule 38 (factor -> VAR .)
+    $end            reduce using rule 38 (factor -> VAR .)
+    RPAREN          reduce using rule 38 (factor -> VAR .)
+
+
+state 25
+
+    (39) factor -> LPAREN . BooleanExpr RPAREN
+    (7) BooleanExpr -> . BooleanExpr OR BooleanTerm
+    (8) BooleanExpr -> . BooleanTerm
+    (9) BooleanTerm -> . BooleanTerm AND BooleanFactor
+    (10) BooleanTerm -> . BooleanFactor
+    (17) BooleanFactor -> . BooleanFactor LogicalOp BoolBase
+    (18) BooleanFactor -> . BoolBase
+    (19) BoolBase -> . String
+    (20) BoolBase -> . NOT BoolBase
+    (21) BoolBase -> . TRUE
+    (22) BoolBase -> . FALSE
+    (23) String -> . String PLUS StringBase
+    (25) String -> . StringBase
+    (26) StringBase -> . expression
+    (27) StringBase -> . REVERSE StringBase
+    (28) StringBase -> . STR
+    (29) expression -> . expression SUB term
+    (30) expression -> . term
+    (31) term -> . term MULT term2
+    (32) term -> . term DIV term2
+    (33) term -> . term2
+    (34) term2 -> . term2 EXP factor
+    (35) term2 -> . factor
+    (36) factor -> . INTEGER
+    (37) factor -> . SUB factor
+    (38) factor -> . VAR
+    (39) factor -> . LPAREN BooleanExpr RPAREN
+
+    NOT             shift and go to state 12
+    TRUE            shift and go to state 13
+    FALSE           shift and go to state 14
+    REVERSE         shift and go to state 17
+    STR             shift and go to state 18
+    INTEGER         shift and go to state 23
+    SUB             shift and go to state 19
+    VAR             shift and go to state 24
+    LPAREN          shift and go to state 25
+
+    BooleanExpr                    shift and go to state 44
+    BooleanTerm                    shift and go to state 8
+    BooleanFactor                  shift and go to state 9
+    BoolBase                       shift and go to state 10
+    String                         shift and go to state 11
+    StringBase                     shift and go to state 15
+    expression                     shift and go to state 16
+    term                           shift and go to state 20
+    term2                          shift and go to state 21
+    factor                         shift and go to state 22
+
+state 26
+
+    (5) Array -> Array COMMA . BooleanExpr
+    (7) BooleanExpr -> . BooleanExpr OR BooleanTerm
+    (8) BooleanExpr -> . BooleanTerm
+    (9) BooleanTerm -> . BooleanTerm AND BooleanFactor
+    (10) BooleanTerm -> . BooleanFactor
+    (17) BooleanFactor -> . BooleanFactor LogicalOp BoolBase
+    (18) BooleanFactor -> . BoolBase
+    (19) BoolBase -> . String
+    (20) BoolBase -> . NOT BoolBase
+    (21) BoolBase -> . TRUE
+    (22) BoolBase -> . FALSE
+    (23) String -> . String PLUS StringBase
+    (25) String -> . StringBase
+    (26) StringBase -> . expression
+    (27) StringBase -> . REVERSE StringBase
+    (28) StringBase -> . STR
+    (29) expression -> . expression SUB term
+    (30) expression -> . term
+    (31) term -> . term MULT term2
+    (32) term -> . term DIV term2
+    (33) term -> . term2
+    (34) term2 -> . term2 EXP factor
+    (35) term2 -> . factor
+    (36) factor -> . INTEGER
+    (37) factor -> . SUB factor
+    (38) factor -> . VAR
+    (39) factor -> . LPAREN BooleanExpr RPAREN
+
+    NOT             shift and go to state 12
+    TRUE            shift and go to state 13
+    FALSE           shift and go to state 14
+    REVERSE         shift and go to state 17
+    STR             shift and go to state 18
+    INTEGER         shift and go to state 23
+    SUB             shift and go to state 19
+    VAR             shift and go to state 24
+    LPAREN          shift and go to state 25
+
+    BooleanExpr                    shift and go to state 45
+    BooleanTerm                    shift and go to state 8
+    BooleanFactor                  shift and go to state 9
+    BoolBase                       shift and go to state 10
+    String                         shift and go to state 11
+    StringBase                     shift and go to state 15
+    expression                     shift and go to state 16
+    term                           shift and go to state 20
+    term2                          shift and go to state 21
+    factor                         shift and go to state 22
+
+state 27
+
+    (7) BooleanExpr -> BooleanExpr OR . BooleanTerm
+    (9) BooleanTerm -> . BooleanTerm AND BooleanFactor
+    (10) BooleanTerm -> . BooleanFactor
+    (17) BooleanFactor -> . BooleanFactor LogicalOp BoolBase
+    (18) BooleanFactor -> . BoolBase
+    (19) BoolBase -> . String
+    (20) BoolBase -> . NOT BoolBase
+    (21) BoolBase -> . TRUE
+    (22) BoolBase -> . FALSE
+    (23) String -> . String PLUS StringBase
+    (25) String -> . StringBase
+    (26) StringBase -> . expression
+    (27) StringBase -> . REVERSE StringBase
+    (28) StringBase -> . STR
+    (29) expression -> . expression SUB term
+    (30) expression -> . term
+    (31) term -> . term MULT term2
+    (32) term -> . term DIV term2
+    (33) term -> . term2
+    (34) term2 -> . term2 EXP factor
+    (35) term2 -> . factor
+    (36) factor -> . INTEGER
+    (37) factor -> . SUB factor
+    (38) factor -> . VAR
+    (39) factor -> . LPAREN BooleanExpr RPAREN
+
+    NOT             shift and go to state 12
+    TRUE            shift and go to state 13
+    FALSE           shift and go to state 14
+    REVERSE         shift and go to state 17
+    STR             shift and go to state 18
+    INTEGER         shift and go to state 23
+    SUB             shift and go to state 19
+    VAR             shift and go to state 24
+    LPAREN          shift and go to state 25
+
+    BooleanTerm                    shift and go to state 46
+    BooleanFactor                  shift and go to state 9
+    BoolBase                       shift and go to state 10
+    String                         shift and go to state 11
+    StringBase                     shift and go to state 15
+    expression                     shift and go to state 16
+    term                           shift and go to state 20
+    term2                          shift and go to state 21
+    factor                         shift and go to state 22
+
+state 28
+
+    (9) BooleanTerm -> BooleanTerm AND . BooleanFactor
+    (17) BooleanFactor -> . BooleanFactor LogicalOp BoolBase
+    (18) BooleanFactor -> . BoolBase
+    (19) BoolBase -> . String
+    (20) BoolBase -> . NOT BoolBase
+    (21) BoolBase -> . TRUE
+    (22) BoolBase -> . FALSE
+    (23) String -> . String PLUS StringBase
+    (25) String -> . StringBase
+    (26) StringBase -> . expression
+    (27) StringBase -> . REVERSE StringBase
+    (28) StringBase -> . STR
+    (29) expression -> . expression SUB term
+    (30) expression -> . term
+    (31) term -> . term MULT term2
+    (32) term -> . term DIV term2
+    (33) term -> . term2
+    (34) term2 -> . term2 EXP factor
+    (35) term2 -> . factor
+    (36) factor -> . INTEGER
+    (37) factor -> . SUB factor
+    (38) factor -> . VAR
+    (39) factor -> . LPAREN BooleanExpr RPAREN
+
+    NOT             shift and go to state 12
+    TRUE            shift and go to state 13
+    FALSE           shift and go to state 14
+    REVERSE         shift and go to state 17
+    STR             shift and go to state 18
+    INTEGER         shift and go to state 23
+    SUB             shift and go to state 19
+    VAR             shift and go to state 24
+    LPAREN          shift and go to state 25
+
+    BooleanFactor                  shift and go to state 47
+    BoolBase                       shift and go to state 10
+    String                         shift and go to state 11
+    StringBase                     shift and go to state 15
+    expression                     shift and go to state 16
+    term                           shift and go to state 20
+    term2                          shift and go to state 21
+    factor                         shift and go to state 22
+
+state 29
+
+    (17) BooleanFactor -> BooleanFactor LogicalOp . BoolBase
+    (19) BoolBase -> . String
+    (20) BoolBase -> . NOT BoolBase
+    (21) BoolBase -> . TRUE
+    (22) BoolBase -> . FALSE
+    (23) String -> . String PLUS StringBase
+    (25) String -> . StringBase
+    (26) StringBase -> . expression
+    (27) StringBase -> . REVERSE StringBase
+    (28) StringBase -> . STR
+    (29) expression -> . expression SUB term
+    (30) expression -> . term
+    (31) term -> . term MULT term2
+    (32) term -> . term DIV term2
+    (33) term -> . term2
+    (34) term2 -> . term2 EXP factor
+    (35) term2 -> . factor
+    (36) factor -> . INTEGER
+    (37) factor -> . SUB factor
+    (38) factor -> . VAR
+    (39) factor -> . LPAREN BooleanExpr RPAREN
+
+    NOT             shift and go to state 12
+    TRUE            shift and go to state 13
+    FALSE           shift and go to state 14
+    REVERSE         shift and go to state 17
+    STR             shift and go to state 18
+    INTEGER         shift and go to state 23
+    SUB             shift and go to state 19
+    VAR             shift and go to state 24
+    LPAREN          shift and go to state 25
+
+    BoolBase                       shift and go to state 48
+    String                         shift and go to state 11
+    StringBase                     shift and go to state 15
+    expression                     shift and go to state 16
+    term                           shift and go to state 20
+    term2                          shift and go to state 21
+    factor                         shift and go to state 22
+
+state 30
+
+    (11) LogicalOp -> GE .
+
+    NOT             reduce using rule 11 (LogicalOp -> GE .)
+    TRUE            reduce using rule 11 (LogicalOp -> GE .)
+    FALSE           reduce using rule 11 (LogicalOp -> GE .)
+    REVERSE         reduce using rule 11 (LogicalOp -> GE .)
+    STR             reduce using rule 11 (LogicalOp -> GE .)
+    INTEGER         reduce using rule 11 (LogicalOp -> GE .)
+    SUB             reduce using rule 11 (LogicalOp -> GE .)
+    VAR             reduce using rule 11 (LogicalOp -> GE .)
+    LPAREN          reduce using rule 11 (LogicalOp -> GE .)
+
+
+state 31
+
+    (12) LogicalOp -> LE .
+
+    NOT             reduce using rule 12 (LogicalOp -> LE .)
+    TRUE            reduce using rule 12 (LogicalOp -> LE .)
+    FALSE           reduce using rule 12 (LogicalOp -> LE .)
+    REVERSE         reduce using rule 12 (LogicalOp -> LE .)
+    STR             reduce using rule 12 (LogicalOp -> LE .)
+    INTEGER         reduce using rule 12 (LogicalOp -> LE .)
+    SUB             reduce using rule 12 (LogicalOp -> LE .)
+    VAR             reduce using rule 12 (LogicalOp -> LE .)
+    LPAREN          reduce using rule 12 (LogicalOp -> LE .)
+
+
+state 32
+
+    (13) LogicalOp -> LTE .
+
+    NOT             reduce using rule 13 (LogicalOp -> LTE .)
+    TRUE            reduce using rule 13 (LogicalOp -> LTE .)
+    FALSE           reduce using rule 13 (LogicalOp -> LTE .)
+    REVERSE         reduce using rule 13 (LogicalOp -> LTE .)
+    STR             reduce using rule 13 (LogicalOp -> LTE .)
+    INTEGER         reduce using rule 13 (LogicalOp -> LTE .)
+    SUB             reduce using rule 13 (LogicalOp -> LTE .)
+    VAR             reduce using rule 13 (LogicalOp -> LTE .)
+    LPAREN          reduce using rule 13 (LogicalOp -> LTE .)
+
+
+state 33
+
+    (14) LogicalOp -> GTE .
+
+    NOT             reduce using rule 14 (LogicalOp -> GTE .)
+    TRUE            reduce using rule 14 (LogicalOp -> GTE .)
+    FALSE           reduce using rule 14 (LogicalOp -> GTE .)
+    REVERSE         reduce using rule 14 (LogicalOp -> GTE .)
+    STR             reduce using rule 14 (LogicalOp -> GTE .)
+    INTEGER         reduce using rule 14 (LogicalOp -> GTE .)
+    SUB             reduce using rule 14 (LogicalOp -> GTE .)
+    VAR             reduce using rule 14 (LogicalOp -> GTE .)
+    LPAREN          reduce using rule 14 (LogicalOp -> GTE .)
+
+
+state 34
+
+    (15) LogicalOp -> EQUAL .
+
+    NOT             reduce using rule 15 (LogicalOp -> EQUAL .)
+    TRUE            reduce using rule 15 (LogicalOp -> EQUAL .)
+    FALSE           reduce using rule 15 (LogicalOp -> EQUAL .)
+    REVERSE         reduce using rule 15 (LogicalOp -> EQUAL .)
+    STR             reduce using rule 15 (LogicalOp -> EQUAL .)
+    INTEGER         reduce using rule 15 (LogicalOp -> EQUAL .)
+    SUB             reduce using rule 15 (LogicalOp -> EQUAL .)
+    VAR             reduce using rule 15 (LogicalOp -> EQUAL .)
+    LPAREN          reduce using rule 15 (LogicalOp -> EQUAL .)
+
+
+state 35
+
+    (16) LogicalOp -> NE .
+
+    NOT             reduce using rule 16 (LogicalOp -> NE .)
+    TRUE            reduce using rule 16 (LogicalOp -> NE .)
+    FALSE           reduce using rule 16 (LogicalOp -> NE .)
+    REVERSE         reduce using rule 16 (LogicalOp -> NE .)
+    STR             reduce using rule 16 (LogicalOp -> NE .)
+    INTEGER         reduce using rule 16 (LogicalOp -> NE .)
+    SUB             reduce using rule 16 (LogicalOp -> NE .)
+    VAR             reduce using rule 16 (LogicalOp -> NE .)
+    LPAREN          reduce using rule 16 (LogicalOp -> NE .)
+
+
+state 36
+
+    (23) String -> String PLUS . StringBase
+    (26) StringBase -> . expression
+    (27) StringBase -> . REVERSE StringBase
+    (28) StringBase -> . STR
+    (29) expression -> . expression SUB term
+    (30) expression -> . term
+    (31) term -> . term MULT term2
+    (32) term -> . term DIV term2
+    (33) term -> . term2
+    (34) term2 -> . term2 EXP factor
+    (35) term2 -> . factor
+    (36) factor -> . INTEGER
+    (37) factor -> . SUB factor
+    (38) factor -> . VAR
+    (39) factor -> . LPAREN BooleanExpr RPAREN
+
+    REVERSE         shift and go to state 17
+    STR             shift and go to state 18
+    INTEGER         shift and go to state 23
+    SUB             shift and go to state 19
+    VAR             shift and go to state 24
+    LPAREN          shift and go to state 25
+
+    StringBase                     shift and go to state 49
+    expression                     shift and go to state 16
+    term                           shift and go to state 20
+    term2                          shift and go to state 21
+    factor                         shift and go to state 22
+
+state 37
+
+    (20) BoolBase -> NOT BoolBase .
+
+    GE              reduce using rule 20 (BoolBase -> NOT BoolBase .)
+    LE              reduce using rule 20 (BoolBase -> NOT BoolBase .)
+    LTE             reduce using rule 20 (BoolBase -> NOT BoolBase .)
+    GTE             reduce using rule 20 (BoolBase -> NOT BoolBase .)
+    EQUAL           reduce using rule 20 (BoolBase -> NOT BoolBase .)
+    NE              reduce using rule 20 (BoolBase -> NOT BoolBase .)
+    AND             reduce using rule 20 (BoolBase -> NOT BoolBase .)
+    OR              reduce using rule 20 (BoolBase -> NOT BoolBase .)
+    COMMA           reduce using rule 20 (BoolBase -> NOT BoolBase .)
+    $end            reduce using rule 20 (BoolBase -> NOT BoolBase .)
+    RPAREN          reduce using rule 20 (BoolBase -> NOT BoolBase .)
+
+
+state 38
+
+    (29) expression -> expression SUB . term
+    (31) term -> . term MULT term2
+    (32) term -> . term DIV term2
+    (33) term -> . term2
+    (34) term2 -> . term2 EXP factor
+    (35) term2 -> . factor
+    (36) factor -> . INTEGER
+    (37) factor -> . SUB factor
+    (38) factor -> . VAR
+    (39) factor -> . LPAREN BooleanExpr RPAREN
+
+    INTEGER         shift and go to state 23
+    SUB             shift and go to state 19
+    VAR             shift and go to state 24
+    LPAREN          shift and go to state 25
+
+    term                           shift and go to state 50
+    term2                          shift and go to state 21
+    factor                         shift and go to state 22
+
+state 39
+
+    (27) StringBase -> REVERSE StringBase .
+
+    PLUS            reduce using rule 27 (StringBase -> REVERSE StringBase .)
+    GE              reduce using rule 27 (StringBase -> REVERSE StringBase .)
+    LE              reduce using rule 27 (StringBase -> REVERSE StringBase .)
+    LTE             reduce using rule 27 (StringBase -> REVERSE StringBase .)
+    GTE             reduce using rule 27 (StringBase -> REVERSE StringBase .)
+    EQUAL           reduce using rule 27 (StringBase -> REVERSE StringBase .)
+    NE              reduce using rule 27 (StringBase -> REVERSE StringBase .)
+    AND             reduce using rule 27 (StringBase -> REVERSE StringBase .)
+    OR              reduce using rule 27 (StringBase -> REVERSE StringBase .)
+    COMMA           reduce using rule 27 (StringBase -> REVERSE StringBase .)
+    $end            reduce using rule 27 (StringBase -> REVERSE StringBase .)
+    RPAREN          reduce using rule 27 (StringBase -> REVERSE StringBase .)
+
+
+state 40
+
+    (37) factor -> SUB factor .
+
+    EXP             reduce using rule 37 (factor -> SUB factor .)
+    MULT            reduce using rule 37 (factor -> SUB factor .)
+    DIV             reduce using rule 37 (factor -> SUB factor .)
+    SUB             reduce using rule 37 (factor -> SUB factor .)
+    PLUS            reduce using rule 37 (factor -> SUB factor .)
+    GE              reduce using rule 37 (factor -> SUB factor .)
+    LE              reduce using rule 37 (factor -> SUB factor .)
+    LTE             reduce using rule 37 (factor -> SUB factor .)
+    GTE             reduce using rule 37 (factor -> SUB factor .)
+    EQUAL           reduce using rule 37 (factor -> SUB factor .)
+    NE              reduce using rule 37 (factor -> SUB factor .)
+    AND             reduce using rule 37 (factor -> SUB factor .)
+    OR              reduce using rule 37 (factor -> SUB factor .)
+    COMMA           reduce using rule 37 (factor -> SUB factor .)
+    $end            reduce using rule 37 (factor -> SUB factor .)
+    RPAREN          reduce using rule 37 (factor -> SUB factor .)
+
+
+state 41
+
+    (31) term -> term MULT . term2
+    (34) term2 -> . term2 EXP factor
+    (35) term2 -> . factor
+    (36) factor -> . INTEGER
+    (37) factor -> . SUB factor
+    (38) factor -> . VAR
+    (39) factor -> . LPAREN BooleanExpr RPAREN
+
+    INTEGER         shift and go to state 23
+    SUB             shift and go to state 19
+    VAR             shift and go to state 24
+    LPAREN          shift and go to state 25
+
+    term2                          shift and go to state 51
+    factor                         shift and go to state 22
+
+state 42
+
+    (32) term -> term DIV . term2
+    (34) term2 -> . term2 EXP factor
+    (35) term2 -> . factor
+    (36) factor -> . INTEGER
+    (37) factor -> . SUB factor
+    (38) factor -> . VAR
+    (39) factor -> . LPAREN BooleanExpr RPAREN
+
+    INTEGER         shift and go to state 23
+    SUB             shift and go to state 19
+    VAR             shift and go to state 24
+    LPAREN          shift and go to state 25
+
+    term2                          shift and go to state 52
+    factor                         shift and go to state 22
+
+state 43
+
+    (34) term2 -> term2 EXP . factor
+    (36) factor -> . INTEGER
+    (37) factor -> . SUB factor
+    (38) factor -> . VAR
+    (39) factor -> . LPAREN BooleanExpr RPAREN
+
+    INTEGER         shift and go to state 23
+    SUB             shift and go to state 19
+    VAR             shift and go to state 24
+    LPAREN          shift and go to state 25
+
+    factor                         shift and go to state 53
+
+state 44
+
+    (39) factor -> LPAREN BooleanExpr . RPAREN
+    (7) BooleanExpr -> BooleanExpr . OR BooleanTerm
+
+    RPAREN          shift and go to state 54
+    OR              shift and go to state 27
+
+
+state 45
+
+    (5) Array -> Array COMMA BooleanExpr .
+    (7) BooleanExpr -> BooleanExpr . OR BooleanTerm
+
+    COMMA           reduce using rule 5 (Array -> Array COMMA BooleanExpr .)
+    $end            reduce using rule 5 (Array -> Array COMMA BooleanExpr .)
+    OR              shift and go to state 27
+
+
+state 46
+
+    (7) BooleanExpr -> BooleanExpr OR BooleanTerm .
+    (9) BooleanTerm -> BooleanTerm . AND BooleanFactor
+
+    OR              reduce using rule 7 (BooleanExpr -> BooleanExpr OR BooleanTerm .)
+    COMMA           reduce using rule 7 (BooleanExpr -> BooleanExpr OR BooleanTerm .)
+    $end            reduce using rule 7 (BooleanExpr -> BooleanExpr OR BooleanTerm .)
+    RPAREN          reduce using rule 7 (BooleanExpr -> BooleanExpr OR BooleanTerm .)
+    AND             shift and go to state 28
+
+
+state 47
+
+    (9) BooleanTerm -> BooleanTerm AND BooleanFactor .
+    (17) BooleanFactor -> BooleanFactor . LogicalOp BoolBase
+    (11) LogicalOp -> . GE
+    (12) LogicalOp -> . LE
+    (13) LogicalOp -> . LTE
+    (14) LogicalOp -> . GTE
+    (15) LogicalOp -> . EQUAL
+    (16) LogicalOp -> . NE
+
+    AND             reduce using rule 9 (BooleanTerm -> BooleanTerm AND BooleanFactor .)
+    OR              reduce using rule 9 (BooleanTerm -> BooleanTerm AND BooleanFactor .)
+    COMMA           reduce using rule 9 (BooleanTerm -> BooleanTerm AND BooleanFactor .)
+    $end            reduce using rule 9 (BooleanTerm -> BooleanTerm AND BooleanFactor .)
+    RPAREN          reduce using rule 9 (BooleanTerm -> BooleanTerm AND BooleanFactor .)
+    GE              shift and go to state 30
+    LE              shift and go to state 31
+    LTE             shift and go to state 32
+    GTE             shift and go to state 33
+    EQUAL           shift and go to state 34
+    NE              shift and go to state 35
+
+    LogicalOp                      shift and go to state 29
+
+state 48
+
+    (17) BooleanFactor -> BooleanFactor LogicalOp BoolBase .
+
+    GE              reduce using rule 17 (BooleanFactor -> BooleanFactor LogicalOp BoolBase .)
+    LE              reduce using rule 17 (BooleanFactor -> BooleanFactor LogicalOp BoolBase .)
+    LTE             reduce using rule 17 (BooleanFactor -> BooleanFactor LogicalOp BoolBase .)
+    GTE             reduce using rule 17 (BooleanFactor -> BooleanFactor LogicalOp BoolBase .)
+    EQUAL           reduce using rule 17 (BooleanFactor -> BooleanFactor LogicalOp BoolBase .)
+    NE              reduce using rule 17 (BooleanFactor -> BooleanFactor LogicalOp BoolBase .)
+    AND             reduce using rule 17 (BooleanFactor -> BooleanFactor LogicalOp BoolBase .)
+    OR              reduce using rule 17 (BooleanFactor -> BooleanFactor LogicalOp BoolBase .)
+    COMMA           reduce using rule 17 (BooleanFactor -> BooleanFactor LogicalOp BoolBase .)
+    $end            reduce using rule 17 (BooleanFactor -> BooleanFactor LogicalOp BoolBase .)
+    RPAREN          reduce using rule 17 (BooleanFactor -> BooleanFactor LogicalOp BoolBase .)
+
+
+state 49
+
+    (23) String -> String PLUS StringBase .
+
+    PLUS            reduce using rule 23 (String -> String PLUS StringBase .)
+    GE              reduce using rule 23 (String -> String PLUS StringBase .)
+    LE              reduce using rule 23 (String -> String PLUS StringBase .)
+    LTE             reduce using rule 23 (String -> String PLUS StringBase .)
+    GTE             reduce using rule 23 (String -> String PLUS StringBase .)
+    EQUAL           reduce using rule 23 (String -> String PLUS StringBase .)
+    NE              reduce using rule 23 (String -> String PLUS StringBase .)
+    AND             reduce using rule 23 (String -> String PLUS StringBase .)
+    OR              reduce using rule 23 (String -> String PLUS StringBase .)
+    COMMA           reduce using rule 23 (String -> String PLUS StringBase .)
+    $end            reduce using rule 23 (String -> String PLUS StringBase .)
+    RPAREN          reduce using rule 23 (String -> String PLUS StringBase .)
+
+
+state 50
+
+    (29) expression -> expression SUB term .
+    (31) term -> term . MULT term2
+    (32) term -> term . DIV term2
+
+    SUB             reduce using rule 29 (expression -> expression SUB term .)
+    PLUS            reduce using rule 29 (expression -> expression SUB term .)
+    GE              reduce using rule 29 (expression -> expression SUB term .)
+    LE              reduce using rule 29 (expression -> expression SUB term .)
+    LTE             reduce using rule 29 (expression -> expression SUB term .)
+    GTE             reduce using rule 29 (expression -> expression SUB term .)
+    EQUAL           reduce using rule 29 (expression -> expression SUB term .)
+    NE              reduce using rule 29 (expression -> expression SUB term .)
+    AND             reduce using rule 29 (expression -> expression SUB term .)
+    OR              reduce using rule 29 (expression -> expression SUB term .)
+    COMMA           reduce using rule 29 (expression -> expression SUB term .)
+    $end            reduce using rule 29 (expression -> expression SUB term .)
+    RPAREN          reduce using rule 29 (expression -> expression SUB term .)
+    MULT            shift and go to state 41
+    DIV             shift and go to state 42
+
+
+state 51
+
+    (31) term -> term MULT term2 .
+    (34) term2 -> term2 . EXP factor
+
+    MULT            reduce using rule 31 (term -> term MULT term2 .)
+    DIV             reduce using rule 31 (term -> term MULT term2 .)
+    SUB             reduce using rule 31 (term -> term MULT term2 .)
+    PLUS            reduce using rule 31 (term -> term MULT term2 .)
+    GE              reduce using rule 31 (term -> term MULT term2 .)
+    LE              reduce using rule 31 (term -> term MULT term2 .)
+    LTE             reduce using rule 31 (term -> term MULT term2 .)
+    GTE             reduce using rule 31 (term -> term MULT term2 .)
+    EQUAL           reduce using rule 31 (term -> term MULT term2 .)
+    NE              reduce using rule 31 (term -> term MULT term2 .)
+    AND             reduce using rule 31 (term -> term MULT term2 .)
+    OR              reduce using rule 31 (term -> term MULT term2 .)
+    COMMA           reduce using rule 31 (term -> term MULT term2 .)
+    $end            reduce using rule 31 (term -> term MULT term2 .)
+    RPAREN          reduce using rule 31 (term -> term MULT term2 .)
+    EXP             shift and go to state 43
+
+
+state 52
+
+    (32) term -> term DIV term2 .
+    (34) term2 -> term2 . EXP factor
+
+    MULT            reduce using rule 32 (term -> term DIV term2 .)
+    DIV             reduce using rule 32 (term -> term DIV term2 .)
+    SUB             reduce using rule 32 (term -> term DIV term2 .)
+    PLUS            reduce using rule 32 (term -> term DIV term2 .)
+    GE              reduce using rule 32 (term -> term DIV term2 .)
+    LE              reduce using rule 32 (term -> term DIV term2 .)
+    LTE             reduce using rule 32 (term -> term DIV term2 .)
+    GTE             reduce using rule 32 (term -> term DIV term2 .)
+    EQUAL           reduce using rule 32 (term -> term DIV term2 .)
+    NE              reduce using rule 32 (term -> term DIV term2 .)
+    AND             reduce using rule 32 (term -> term DIV term2 .)
+    OR              reduce using rule 32 (term -> term DIV term2 .)
+    COMMA           reduce using rule 32 (term -> term DIV term2 .)
+    $end            reduce using rule 32 (term -> term DIV term2 .)
+    RPAREN          reduce using rule 32 (term -> term DIV term2 .)
+    EXP             shift and go to state 43
+
+
+state 53
+
+    (34) term2 -> term2 EXP factor .
+
+    EXP             reduce using rule 34 (term2 -> term2 EXP factor .)
+    MULT            reduce using rule 34 (term2 -> term2 EXP factor .)
+    DIV             reduce using rule 34 (term2 -> term2 EXP factor .)
+    SUB             reduce using rule 34 (term2 -> term2 EXP factor .)
+    PLUS            reduce using rule 34 (term2 -> term2 EXP factor .)
+    GE              reduce using rule 34 (term2 -> term2 EXP factor .)
+    LE              reduce using rule 34 (term2 -> term2 EXP factor .)
+    LTE             reduce using rule 34 (term2 -> term2 EXP factor .)
+    GTE             reduce using rule 34 (term2 -> term2 EXP factor .)
+    EQUAL           reduce using rule 34 (term2 -> term2 EXP factor .)
+    NE              reduce using rule 34 (term2 -> term2 EXP factor .)
+    AND             reduce using rule 34 (term2 -> term2 EXP factor .)
+    OR              reduce using rule 34 (term2 -> term2 EXP factor .)
+    COMMA           reduce using rule 34 (term2 -> term2 EXP factor .)
+    $end            reduce using rule 34 (term2 -> term2 EXP factor .)
+    RPAREN          reduce using rule 34 (term2 -> term2 EXP factor .)
+
+
+state 54
+
+    (39) factor -> LPAREN BooleanExpr RPAREN .
+
+    EXP             reduce using rule 39 (factor -> LPAREN BooleanExpr RPAREN .)
+    MULT            reduce using rule 39 (factor -> LPAREN BooleanExpr RPAREN .)
+    DIV             reduce using rule 39 (factor -> LPAREN BooleanExpr RPAREN .)
+    SUB             reduce using rule 39 (factor -> LPAREN BooleanExpr RPAREN .)
+    PLUS            reduce using rule 39 (factor -> LPAREN BooleanExpr RPAREN .)
+    GE              reduce using rule 39 (factor -> LPAREN BooleanExpr RPAREN .)
+    LE              reduce using rule 39 (factor -> LPAREN BooleanExpr RPAREN .)
+    LTE             reduce using rule 39 (factor -> LPAREN BooleanExpr RPAREN .)
+    GTE             reduce using rule 39 (factor -> LPAREN BooleanExpr RPAREN .)
+    EQUAL           reduce using rule 39 (factor -> LPAREN BooleanExpr RPAREN .)
+    NE              reduce using rule 39 (factor -> LPAREN BooleanExpr RPAREN .)
+    AND             reduce using rule 39 (factor -> LPAREN BooleanExpr RPAREN .)
+    OR              reduce using rule 39 (factor -> LPAREN BooleanExpr RPAREN .)
+    COMMA           reduce using rule 39 (factor -> LPAREN BooleanExpr RPAREN .)
+    $end            reduce using rule 39 (factor -> LPAREN BooleanExpr RPAREN .)
+    RPAREN          reduce using rule 39 (factor -> LPAREN BooleanExpr RPAREN .)
+
